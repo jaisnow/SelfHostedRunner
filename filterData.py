@@ -1,34 +1,55 @@
-data = [
-		{'city': 'indore', 'population': '5000000', 'state': 'Mp', 'code': 452001},
-		{'city': 'Bhopal', 'population': '6000000', 'state': 'Mp', 'code': 452011},
-		{'city': 'chennai', 'population': '10000000', 'state': 'TN', 'code': 552001},
-		{'city': 'chennai', 'population': '9000000', 'state': 'TN', 'code': 562001},
-		{'city': 'banglore', 'population': '5500000', 'state': 'Kn', 'code': 452111},
-		{'city': 'indore', 'population': '7000000', 'state': 'Mp', 'code': 452010},
-		{'city': 'Jaipur', 'population': '9900000', 'state': 'Rj', 'code': 442001},
-		{'city': 'indore', 'population': '4500000', 'state': 'Mp', 'code': 452000},
-		{'city': 'Bhopal', 'population': '6540000', 'state': 'Mp', 'code': 452211},
-		{'city': 'Bhopal', 'population': '2000000', 'state': 'Mp', 'code': 462011},
-		{'city': 'Jaipur', 'population': '9800000', 'state': 'Rj', 'code': 442201},
-		{'city': 'Jaipur', 'population': '9700000', 'state': 'Rj', 'code': 422001},
-		{'city': 'banglore', 'population': '5600000', 'state': 'Kn', 'code': 402111},
-		{'city': 'manglore', 'population': '5550000', 'state': 'Kn', 'code': 442111},
-		]
+# This function adds two numbers
+def add(x, y):
+    return x + y
 
-formatedData = {}
-sorted_data = sorted(data, key = lambda i: int(i['population']), reverse=True)
+# This function subtracts two numbers
+def subtract(x, y):
+    return x - y
+
+# This function multiplies two numbers
+def multiply(x, y):
+    return x * y
+
+# This function divides two numbers
+def divide(x, y):
+    return x / y
 
 
-for i in sorted_data:
-	if i['city'] not in formatedData:
-		formatedData[i['city']] = [{i['population']: i['code']}]
-	else:
-		if len(formatedData[i['city']]) <2:
-			formatedData[i['city']].append({i['population']: i['code']})
+print("Select operation.")
+print("1.Add")
+print("2.Subtract")
+print("3.Multiply")
+print("4.Divide")
 
-print(formatedData)
+while True:
+    # take input from the user
+    choice = input("Enter choice(1/2/3/4): ")
 
-for k,v in formatedData.items():
-	print('{} top populated cities code is......'.format(k))
-	for j in v:
-		print(list(j.values())[0])
+    # check if choice is one of the four options
+    if choice in ('1', '2', '3', '4'):
+        try:
+            num1 = float(input("Enter first number: "))
+            num2 = float(input("Enter second number: "))
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+            continue
+
+        if choice == '1':
+            print(num1, "+", num2, "=", add(num1, num2))
+
+        elif choice == '2':
+            print(num1, "-", num2, "=", subtract(num1, num2))
+
+        elif choice == '3':
+            print(num1, "*", num2, "=", multiply(num1, num2))
+
+        elif choice == '4':
+            print(num1, "/", num2, "=", divide(num1, num2))
+        
+        # check if user wants another calculation
+        # break the while loop if answer is no
+        next_calculation = input("Let's do next calculation? (yes/no): ")
+        if next_calculation == "no":
+          break
+    else:
+        print("Invalid Input")
