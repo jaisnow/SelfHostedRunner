@@ -25,9 +25,8 @@ jobs:
       - name: setup Java
         uses: actions/setup-java@v3
         with:
-          distribution: 'temurin'
+          distribution: 'temurin' # See 'Supported distributions' for available options
           java-version: '17'
-          cache: 'maven'
 
 #       - name: install python packages
 #         run: |
